@@ -7,6 +7,7 @@
 ## 사용 방법
 ### 데이터셋 준비
 [UTKFace 데이터셋](https://susanqq.github.io/UTKFace/)을 준비해야 합니다.<br>
+전처리 된 데이터셋은 [dataset](https://github.com/klee9/Spectator-Ethnicity-Classifier/tree/main/dataset)에서 확인할 수 있습니다.
 
 ### 학습
 ```
