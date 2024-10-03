@@ -1,7 +1,19 @@
-# Crowd-Ethnicity-Classifier
+# Spectator-Ethnicity-Classifier
+📷 Paris 2024 Spectator Ethnicity Classifier (Deep Daiv. '24su Deep Learning Team)
+<br>(팀명: 디비딥러닝 - [이건](https://github.com/klee9), [이호균](https://github.com/lhg010524), [손보민](https://github.com/sonbomin), [황재령](https://github.com/Hwang-Jaeryeong)<br><br>
+## 소개
+인공지능 연합 프로젝트 팀 deep daiv.의 2024 여름 기수 딥러닝 입문 <디비딥러닝> 팀의 첫 번째 프로젝트로 진행된 **파리 올림픽 관중석 인종 분류** 프로젝트 레포지토리입니다.<br><br>
 
-daiv 24su project #1
-<br>
-<img width="330" alt="image" src="https://github.com/user-attachments/assets/accf2796-2173-4737-9c7a-bf107f8b22c0">
-<br><br>
-^ 예시 결과 이미지
+## 사용 방법
+### 데이터셋 준비
+[UTKFace 데이터셋](https://susanqq.github.io/UTKFace/)을 준비해야 합니다.<br>
+
+### 학습
+```
+python train.py
+```
+### 추론
+```
+python test.py
+```
+## 프로젝트 설명 페이지
