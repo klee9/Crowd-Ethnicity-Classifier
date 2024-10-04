@@ -9,6 +9,11 @@
 - [UTKFace 데이터셋](https://susanqq.github.io/UTKFace/)을 준비해야 합니다.<br>
 - 전처리 된 데이터셋은 [dataset](https://github.com/klee9/Spectator-Ethnicity-Classifier/tree/main/dataset)에서 확인할 수 있습니다.<br><br>
 
+### 디펜던시 설치
+```
+python -m pip install -r requirements.txt
+```
+
 ### 학습
 ```
 python train.py
@@ -20,3 +25,4 @@ python test.py
 </br>
 
 ## 프로젝트 설명 페이지
+https://klee9.tistory.com/6
