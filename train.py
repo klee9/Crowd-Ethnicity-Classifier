@@ -2,9 +2,38 @@ import os
 import torch
 import torch.nn as nn
 import torch.optim as optim
-from torchvision.models import resnet101, ResNet101_Weights
 from tqdm import tqdm
+from torch.utils.data import DataLoader, random_split
+import torchvision.transforms as transforms
+from torchvision.datasets import ImageFolder
+from torchvision.models import resnet101, ResNet101_Weights
 
+# transformation 정의
+transform = transforms.Compose([
+    transforms.Resize(size=224),
+    transforms.RandomHorizontalFlip(p=0.5), # 50% 확률로 horizontal flip
+    transforms.RandomRotation(degrees=15), # -15 ~ 15도 랜덤하게 회전
+    transforms.GaussianBlur(kernel_size=(5, 5), sigma=(0.5, 1.0)), # 가우시안 블러 추가
+    transforms.CenterCrop(size=175), # 중앙 부분 자르기
+    transforms.ToTensor()
+])
+
+# 데이터셋 전처리
+data_path = input("Path to dataset: ")
+dataset = ImageFolder(root=data_path, transform=transform) # ImageFolder는 subfolder의 이름을 클래스로 사용
+
+# 훈련/검증/테스트 세트 나누기
+train_size = int(0.65 * len(dataset))
+val_size = int(0.2 * len(dataset))
+test_size = len(dataset) - train_size - val_size
+
+train_set, val_set, test_set = random_split(dataset, [train_size, val_size, test_size])
+
+train_loader = DataLoader(train_set, batch_size=32, shuffle=True)
+val_loader = DataLoader(val_set, batch_size=32, shuffle=False)
+test_loader = DataLoader(test_set, batch_size=32, shuffle=False)
+
+# 모델 로딩
 num_classes = 5 # [Asian, Black, Indian, Others, White]
 model = resnet101(weights=ResNet101_Weights.DEFAULT)
 model.fc = nn.Linear(model.fc.in_features, num_classes)
